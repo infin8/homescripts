@@ -1,0 +1,19 @@
+[Unit]
+Description=mergerFS Mounts
+After=network-online.target rclone.service
+Wants=network-online.target rclone.service
+RequiresMountsFor=/GD
+
+[Service]
+Type=forking
+User=felix
+Group=felix
+ExecStart=/home/felix/scripts/mergerfs_mount
+ExecStop=/usr/bin/sudo /usr/bin/fusermount -uz /gmedia
+Restart=on-abort
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+
+[Install]
+WantedBy=default.target
