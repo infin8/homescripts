@@ -1,0 +1,27 @@
+[Unit]
+Description=RClone Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+ExecStart=/home/felix/go/bin/rclone cmount gcrypt: /GD \
+   --allow-other \
+   --dir-cache-time 48h \
+   --vfs-read-chunk-size 64M \
+   --vfs-read-chunk-size-limit 256M \
+   --buffer-size 2G \
+   --syslog \
+   --umask 002 \
+   --bind 192.168.1.30 \
+   -o auto_cache \
+   -o sync_read \
+   --log-level INFO
+ExecStop=/bin/fusermount -uz /GD
+ExecStartPost=/home/felix/scripts/GD_find
+Restart=on-abort
+User=felix
+Group=felix
+
+[Install]
+WantedBy=default.target
