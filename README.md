@@ -2,7 +2,7 @@ This is just a location for me as I wanted a spot to keep all my plex / media re
 
 These are the settings that I found most useful.
 
-My home confriguration:
+My home configuration:
 
 - Verizon Gigabit FIOS
 - Google Drive with an Encrypted Media Folder
@@ -11,4 +11,3 @@ My home confriguration:
 - 32 GB of Memory
 - 200 GB SSD Storage for my root
 - 6TB mirrored ZFS for staging
-
