@@ -1,0 +1,16 @@
+[Unit]
+Description=Homebridge
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/homebridge
+Type=simple
+GuessMainPID=no
+User=felix
+Group=felix
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

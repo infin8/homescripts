@@ -1,0 +1,18 @@
+[Unit]
+Description=Plex AutoScan Service
+After=syslog.target network.target
+Wants=network-online.target
+
+[Service]
+User=felix
+Group=felix
+
+Type=simple
+WorkingDirectory=/opt/plex_autoscan
+ExecStart=/opt/plex_autoscan/scan.py server
+TimeoutStopSec=20
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
