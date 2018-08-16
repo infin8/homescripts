@@ -1,0 +1,22 @@
+[Unit]
+Description=RClone Service
+PartOf=gmedia.service
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/rclone mount gcrypt: /GD \
+   --allow-other \
+   --dir-cache-time 72h \
+   --vfs-read-chunk-size 128M \
+   --vfs-read-chunk-size-limit off \
+   --umask 002 \
+   --bind 192.168.1.30 \
+   --log-level INFO \
+   --log-file /home/felix/logs/rclone.log
+ExecStop=/bin/fusermount -uz /GD
+Restart=on-failure
+User=felix
+Group=felix
+
+[Install]
+WantedBy=gmedia.service

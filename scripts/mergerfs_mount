@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/mergerfs -o direct_io,default_permissions,sync_read,allow_other,category.action=all,category.create=ff /data/local:/GD /gmedia

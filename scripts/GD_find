@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/find /GD > /home/felix/logs/GDfind.txt &
