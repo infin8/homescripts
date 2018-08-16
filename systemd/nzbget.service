@@ -1,0 +1,18 @@
+[Unit]
+Description=NZBGet Daemon
+After=network-online.target
+Wants=network-online.target
+RequiresMountsFor=/data
+
+[Service]
+User=felix
+Group=felix
+Type=forking
+ExecStart=/opt/nzbget/nzbget -c /opt/nzbget/nzbget.conf -D
+ExecStop=/opt/nzbget/nzbget -Q
+ExecReload=/opt/nzbget/nzbget -O
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

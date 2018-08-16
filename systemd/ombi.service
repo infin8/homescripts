@@ -1,0 +1,17 @@
+[Unit]
+Description=Ombi
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/opt/Ombi
+ExecStart=/opt/Ombi/Ombi
+Type=simple
+GuessMainPID=no
+User=felix
+Group=felix
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

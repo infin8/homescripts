@@ -1,0 +1,27 @@
+[Unit]
+Description=RClone Service
+PartOf=gmedia.service
+
+[Service]
+Type=notify
+ExecStart=/home/felix/go/bin/rclone cmount gcrypt: /GD \
+   --allow-other \
+   -o auto_cache \
+   -o sync_read \
+   --dir-cache-time 80h \
+   --cache-chunk-size 32M \
+   --cache-db-purge \
+   --cache-info-age 72h \
+   --cache-workers 5 \
+   --buffer-size=0M \
+   --umask 002 \
+   --bind 192.168.1.30 \
+   --log-level INFO \
+   --log-file /home/felix/logs/rclone.log
+ExecStop=/bin/fusermount -uz /GD
+Restart=on-failure
+User=felix
+Group=felix
+
+[Install]
+WantedBy=gmedia.service

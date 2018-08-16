@@ -1,0 +1,17 @@
+[Unit]
+Description=rTorrent Service
+After=gmedia-mergerfs.service network-online.target
+Wants=gmedia-mergerfs.service network-online.target
+
+[Service]
+Type=forking
+KillMode=none
+ExecStart=/usr/bin/screen -d -m -fa -S rtorrent /usr/bin/ionice -c2 -n5 /usr/bin/rtorrent
+ExecStop=/usr/bin/killall -w -s 2 /usr/bin/rtorrent
+WorkingDirectory=/home/felix
+Restart=always
+User=felix
+Group=felix
+
+[Install]
+WantedBy=multi-user.target

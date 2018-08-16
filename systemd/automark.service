@@ -1,0 +1,20 @@
+[Unit]
+Description=AutoMark Service
+After=syslog.target network.target
+Wants=network-online.target
+
+[Service]
+User=felix
+Group=felix
+
+Type=simple
+WorkingDirectory=/opt/AutoMarkWatched
+ExecStart=/usr/bin/python3 /opt/AutoMarkWatched/manage.py runserver 0:8001
+TimeoutStopSec=20
+KillMode=process
+Restart=on-failure
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=multi-user.target
