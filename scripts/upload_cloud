@@ -1,0 +1,14 @@
+#!/bin/bash
+# This is a script to move files each night
+# It uses an excludes file to ignore partials and .srt (subtitles)
+#
+LOCKFILE="/var/lock/`basename $0`"
+
+(
+  # Wait for lock for 5 seconds
+  flock -x -w 5 200 || exit 1
+
+# Move older local files to the cloud
+/usr/bin/rclone move /data/local/ gcrypt: --checkers 3 --fast-list --log-file /home/felix/logs/upload.log -v --tpslimit 3 --transfers 3 --exclude-from /home/felix/scripts/excludes --delete-empty-src-dirs
+
+) 200> ${LOCKFILE}
