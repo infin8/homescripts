@@ -1,8 +1,2 @@
 #!/bin/bash
-# My default mount command with mergerfs
-#
-# This takes a local disk /data/local as the first place to write
-# /GD is my Google Drive rclone
-# /gmedia is the combined mount
-#
 /usr/bin/mergerfs -o direct_io,default_permissions,sync_read,allow_other,category.action=all,category.create=ff /data/local:/GD /gmedia

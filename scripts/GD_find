@@ -1,3 +1,2 @@
 #!/bin/bash
-# This is a simple find script that logs the output for my benefit for my Google Drive 
 /usr/bin/find /GD > /home/felix/logs/GDfind.txt &

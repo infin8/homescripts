@@ -1,7 +1,4 @@
 #!/bin/bash
-# This is a script to move files each night
-# It uses an excludes file to ignore partials and .srt (subtitles)
-#
 LOCKFILE="/var/lock/`basename $0`"
 
 (
