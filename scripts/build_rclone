@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export GOBIN=$HOME/go/bin
+
+cd
+go get -u -v github.com/ncw/rclone/...
+go get -u -v github.com/ncw/rclone
+
+cd ~/src/github.com/ncw/rclone
+go install -tags cmount

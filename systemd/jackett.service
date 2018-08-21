@@ -1,0 +1,18 @@
+
+[Unit]
+Description=Jackett Daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/opt/Jackett/
+User=felix
+ExecStart=/usr/bin/mono --debug JackettConsole.exe --NoRestart
+Restart=always
+RestartSec=2
+Type=simple
+TimeoutStopSec=5
+SyslogIdentifier=jackett
+
+[Install]
+WantedBy=multi-user.target
