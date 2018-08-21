@@ -4,11 +4,9 @@ PartOf=gmedia.service
 
 [Service]
 Type=notify
-ExecStart=/home/felix/go/bin/rclone cmount gcrypt: /GD \
+ExecStart=/usr/bin/rclone mount gcrypt: /GD \
    --allow-other \
    --dir-cache-time 72h \
-   -o direct_io \
-   -o sync_read \
    --buffer-size 1G \
    --vfs-read-chunk-size 64M \
    --vfs-read-chunk-size-limit off \
