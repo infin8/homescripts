@@ -1,6 +1,4 @@
-This is just a location for me as I wanted a spot to keep all my plex / media related scripts that I am using.
-
-These are the settings that I found most useful.
+This is my own location that I used to store my scripts for my home Linux server. This is configured for my setup, but welcome any questions.
 
 ### Home Configuration
 
@@ -20,3 +18,8 @@ I use a combination of mergerfs and rclone to keep a local mount that is always 
     /gmedia
 
 They all get mounted up via my systemd scripts for [gmedia-service](https://github.com/animosity22/homescripts/blob/master/systemd/gmedia.service).
+
+My gmedia starts up items in order:
+1) [rclone mount](https://github.com/animosity22/homescripts/blob/master/systemd/gmedia-rclone.service)
+2) [mergerfs mount](https://github.com/animosity22/homescripts/blob/master/systemd/gmedia-mergerfs.service) which runs the [script](https://github.com/animosity22/homescripts/blob/master/scripts/mergerfs_mount)
+3) [find command](https://github.com/animosity22/homescripts/blob/master/systemd/gmedia-find.service) which runs the [script](https://github.com/animosity22/homescripts/blob/master/scripts/GD_find)
