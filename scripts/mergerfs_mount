@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/bin/mergerfs -o auto_cache,defaults,sync_read,allow_other,category.action=all,category.create=ff /data/local:/GD /gmedia
+/usr/bin/mergerfs -o direct_io,sync_read,allow_other,category.action=all,category.create=ff /data/local:/GD /gmedia
