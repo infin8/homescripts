@@ -3,6 +3,8 @@ Description=gmedia find
 PartOf=gmedia.service
 After=gmedia-rclone.service
 
+# This just simple does a complete walk of the file system to load the directory structure into the dir-cache
+
 [Service]
 # The dummy program will exit
 Type=oneshot
