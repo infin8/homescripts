@@ -20,9 +20,9 @@ I use a combination of mergerfs and rclone to keep a local mount that is always 
 They all get mounted up via my systemd scripts for [gmedia-service](https://github.com/animosity22/homescripts/blob/master/systemd/gmedia.service).
 
 My gmedia starts up items in order:
-1) [rclone mount](https://github.com/animosity22/homescripts/blob/master/systemd/gmedia-rclone.service)
-2) [mergerfs mount](https://github.com/animosity22/homescripts/blob/master/systemd/gmedia-mergerfs.service) which runs the [script](https://github.com/animosity22/homescripts/blob/master/scripts/mergerfs_mount)
-3) [find command](https://github.com/animosity22/homescripts/blob/master/systemd/gmedia-find.service) which runs the [script](https://github.com/animosity22/homescripts/blob/master/scripts/GD_find)
+1) [rclone mount](https://github.com/animosity22/homescripts/blob/master/rclone/gmedia-rclone.service)
+2) [mergerfs mount](https://github.com/animosity22/homescripts/blob/master/rclone/gmedia-mergerfs.service) which runs the [script](https://github.com/animosity22/homescripts/blob/master/scripts/mergerfs_mount)
+3) [find command](https://github.com/animosity22/homescripts/blob/master/rclone/gmedia-find.service) which runs the [script](https://github.com/animosity22/homescripts/blob/master/scripts/GD_find)
 
 ### Known Issues
 - Plex Playback
