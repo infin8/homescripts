@@ -2,9 +2,14 @@
 Description=RClone Service
 PartOf=gmedia.service
 
+# This is my rclone cache file
+# cmount is used as it compiled from source to pass fuse options
+# sync_read must be passed or items are read out of order
+# auto_cache uses file system cache memory
+
 [Service]
 Type=notify
-ExecStart=/home/felix/go/bin/rclone cmount gcrypt: /GD \
+ExecStart=/home/felix/go/bin/rclone cmount gmedia: /GD \
    --allow-other \
    -o auto_cache \
    -o sync_read \
@@ -16,7 +21,7 @@ ExecStart=/home/felix/go/bin/rclone cmount gcrypt: /GD \
    --buffer-size=0M \
    --umask 002 \
    --bind 192.168.1.30 \
-   --log-level INFO \
+   --log-level DEBUG \
    --log-file /home/felix/logs/rclone.log
 ExecStop=/bin/fusermount -uz /GD
 Restart=on-failure
