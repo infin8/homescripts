@@ -5,7 +5,7 @@
 USER=felix
 GROUP=felix
 
-apt -y install unzip
+apt -y install unzip curl fuse libfuse-dev
 
 # Standard rclone install
 curl https://rclone.org/install.sh | sudo bash
@@ -22,3 +22,5 @@ mkdir /gmedia
 # Fix user/group and chmod
 chown $USER:$GROUP /GD /gmedia
 chmod 775 /GD /gmedia
+
+
