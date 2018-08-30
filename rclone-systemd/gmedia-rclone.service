@@ -10,7 +10,7 @@ RequiresMountsFor=/data
 [Service]
 Type=notify
 Environment=RCLONE_CONFIG=/data/rclone/rclone.conf
-ExecStart=/usr/bin/rclone mount gcrypt: /data/mounts/GD \
+ExecStart=/usr/bin/rclone mount gcrypt: /data/mounts/rclone \
    --allow-other \
    --dir-cache-time 72h \
    --buffer-size 1G \
@@ -20,7 +20,7 @@ ExecStart=/usr/bin/rclone mount gcrypt: /data/mounts/GD \
    --bind 192.168.1.30 \
    --log-level INFO \
    --log-file /home/felix/logs/rclone.log
-ExecStop=/bin/fusermount -uz /data/mounts/GD
+ExecStop=/bin/fusermount -uz /data/mounts/rclone
 Restart=on-failure
 User=felix
 Group=felix
