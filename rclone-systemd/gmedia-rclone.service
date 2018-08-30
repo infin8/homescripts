@@ -1,0 +1,29 @@
+[Unit]
+Description=RClone Service
+PartOf=gmedia.service
+RequiresMountsFor=/data
+
+# This uses cmount as it's a built version of rclone from source
+# sync_read must be used or files are read out of order
+# auto_cache allows for system memory to be used
+
+[Service]
+Type=notify
+Environment=RCLONE_CONFIG=/data/rclone/rclone.conf
+ExecStart=/usr/bin/rclone mount gcrypt: /data/mounts/GD \
+   --allow-other \
+   --dir-cache-time 72h \
+   --buffer-size 1G \
+   --vfs-read-chunk-size 128M \
+   --vfs-read-chunk-size-limit off \
+   --umask 002 \
+   --bind 192.168.1.30 \
+   --log-level INFO \
+   --log-file /home/felix/logs/rclone.log
+ExecStop=/bin/fusermount -uz /data/mounts/GD
+Restart=on-failure
+User=felix
+Group=felix
+
+[Install]
+WantedBy=gmedia.service
