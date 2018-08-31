@@ -26,12 +26,13 @@ My gmedia starts up items in order:
 3) [find command](https://github.com/animosity22/homescripts/blob/master/rclone-systemd/gmedia-find.service) which justs caches the directory and file structure and provides me an output of the structure
 
 ### mergerfs
-This can be found over at
+This can be found [mergerfs github](https://github.com/trapexit/mergerfs)
 
 I use the following options:
 
+```
 Options = use_ino,hard_remove,auto_cache,sync_read,allow_other,category.action=all,category.create=ff
-
+```
 Two important items:
 - sync_read as rclone is default built with this and is required for proper streaming
 - category.action=all,category.create=ff says to always create directories / files on the first listed mount point and for my configuration that is my /data/mounts/local
