@@ -18,7 +18,7 @@ I use a combination of mergerfs and rclone to keep a local mount that is always 
         /data/rclone (rclone mount)
     /gmedia
 
-They all get mounted up via my systemd scripts for [gmedia-service](https://github.com/animosity22/homescripts/blob/master/systemd/gmedia.service).
+They all get mounted up via my systemd scripts for [gmedia-service](https://github.com/animosity22/homescripts/blob/master/rclone-systemd/gmedia.service).
 
 My gmedia starts up items in order:
 1) [rclone mount](https://github.com/animosity22/homescripts/blob/master/rclone-systemd/gmedia-rclone.service)
