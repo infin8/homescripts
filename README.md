@@ -18,7 +18,7 @@ This is my own location that I used to store my scripts for my home Linux server
 I use a combination of mergerfs and rclone to keep a local mount that is always written to first and my second mount point is my rclone Google Drive.
 
         /data/local (local disk)
-        /data/rclone (rclone mount)
+        /GD (rclone mount)
     /gmedia
 
 They all get mounted up via my systemd scripts for [gmedia-service](https://github.com/animosity22/homescripts/blob/master/rclone-systemd/gmedia.service).
