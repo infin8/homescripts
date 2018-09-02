@@ -47,6 +47,28 @@ Two important items:
 
 I moved my files to my GD every ngiht via a cron job and an [upload cloud](https://github.com/animosity22/homescripts/blob/master/scripts/upload_cloud) script. This leverages an [excludes](https://github.com/animosity22/homescripts/blob/master/scripts/excludes) file which gets rid of partials and my torrent directory.
 
+## Plex and Caddy Configuration
+
+I use Caddy as a proxy server and route all my items through it. My plex configuration in my CaddyFile as follows:
+
+```bash
+# Plex Server
+plex.animosity.us {
+gzip
+timeouts 1h
+log /opt/caddy/logs/plex.log
+tls {
+  dns cloudflare
+}
+proxy / 127.0.0.1:32400 {
+ transparent
+ websocket
+ keepalive 12
+ timeout 1h
+    }
+}
+```
+
 ## Known Issues
 
 - Plex Playback
@@ -54,3 +76,4 @@ I moved my files to my GD every ngiht via a cron job and an [upload cloud](https
     - Direct Play Stuttering
       - This happens on both vfs-read-chunk-size and cache. Cache masks this more so since the chunks remain local. If you turn off "Allow Direct Play", this will fix the issue as it will Direct Stream instead. Using another player such as Infuse / Emby works as well as they do not exihibit the Direct Play issue. I will retest this once TVOS 12 hits to see if it has been fixed or not.
       - RClone debug log shows the files being rapidly opened and closed as the client seems to request part of the file and close it out.
+      - Another work around that seems to be going well for me is using [Caddy](https://github.com/mholt/caddy) as a proxy server.
