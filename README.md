@@ -49,7 +49,9 @@ I moved my files to my GD every ngiht via a cron job and an [upload cloud](https
 
 ## Plex and Caddy Configuration
 
-I use Caddy as a proxy server and route all my items through it. My plex configuration in my CaddyFile as follows:
+I use [Caddy](https://github.com/mholt/caddy) as a proxy server and route all my items through it. I build via this [script](https://github.com/animosity22/homescripts/blob/master/scripts/build_caddy)
+
+My plex configuration in my CaddyFile as follows:
 
 ```bash
 # Plex Server
