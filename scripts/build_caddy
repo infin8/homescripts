@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# These need to be added to the run.go in the caddy main
+#        _ "github.com/BTBurke/caddy-jwt"
+#        _ "github.com/captncraig/caddy-realip"
+#        _ "github.com/caddyserver/dnsproviders/cloudflare"
+#        _ "github.com/nicolasazrak/caddy-cache"
+#        _ "github.com/jung-kurt/caddy-cgi"
+#        _ "github.com/tarent/loginsrv/caddy"
+
+# Get Caddy
+go get github.com/mholt/caddy/caddy
+go get github.com/caddyserver/builds
+
+# Get other plugins
+go get "github.com/BTBurke/caddy-jwt"
+go get "github.com/captncraig/caddy-realip"
+go get "github.com/caddyserver/dnsproviders/cloudflare"
+go get "github.com/nicolasazrak/caddy-cache"
+go get "github.com/jung-kurt/caddy-cgi"
+go get "github.com/tarent/loginsrv/caddy"
+
+cd $GOPATH/src/github.com/mholt/caddy/caddy 
+go run build.go
+go install
+
+# stop it
+sudo systemctl stop caddy
+
+sudo cp /home/felix/bin/caddy /opt/caddy/caddy
+sudo setcap cap_net_bind_service=+ep /opt/caddy/caddy
+
+# start it
+sudo systemctl start caddy
