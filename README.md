@@ -13,6 +13,11 @@ This is my own location that I used to store my scripts for my home Linux server
 - 6TB mirrored for staging
 - rTorrent, NZBGet, Sonarr, Radarr and Ombi all run locally on my mergerfs mount that allows hard linking of files.
 
+## OpenVPN Configuration
+For all my private traffic, I use [TorGuard](https://torguard.net/) as they support port forwarding and have very good support.
+
+[Setup and Configuration](https://github.com/animosity22/homescripts/blob/master/OPENVPN.MD)
+
 ## Rclone configuration
 
 I use a combination of mergerfs and rclone to keep a local mount that is always written to first and my second mount point is my rclone Google Drive.
