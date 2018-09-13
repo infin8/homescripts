@@ -1,1 +1,31 @@
-/etc/systemd/system/gmedia-rclone.service
+[Unit]
+Description=RClone Service
+PartOf=gmedia.service
+RequiresMountsFor=/data
+
+# This uses cmount as it's a built version of rclone from source
+# sync_read must be used or files are read out of order
+# auto_cache allows for system memory to be used
+
+[Service]
+Type=notify
+Environment=RCLONE_CONFIG=/data/rclone/rclone.conf
+ExecStart=/usr/bin/rclone mount gcrypt: /GD \
+   --allow-other \
+   --bind 192.168.1.30 \
+   --buffer-size 1G \
+   --dir-cache-time 72h \
+   --drive-chunk-size 32M \
+   --fast-list \
+   --log-level INFO \
+   --log-file /home/felix/logs/rclone.log \
+   --umask 002 \
+   --vfs-read-chunk-size 128M \
+   --vfs-read-chunk-size-limit off
+ExecStop=/bin/fusermount -uz /GD
+Restart=on-failure
+User=felix
+Group=felix
+
+[Install]
+WantedBy=gmedia.service
