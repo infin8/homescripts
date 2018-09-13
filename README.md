@@ -13,6 +13,11 @@ This is my own location that I used to store my scripts for my home Linux server
 - 6TB mirrored for staging
 - rTorrent, NZBGet, Sonarr, Radarr and Ombi all run locally on my mergerfs mount that allows hard linking of files.
 
+## OpenVPN Configuration
+For all my private traffic, I use [TorGuard](https://torguard.net/) as they support port forwarding and have very good support.
+
+[Setup and Configuration](https://github.com/animosity22/homescripts/blob/master/OPENVPN.MD)
+
 ## Rclone configuration
 
 I use a combination of mergerfs and rclone to keep a local mount that is always written to first and my second mount point is my rclone Google Drive.
@@ -49,7 +54,7 @@ I moved my files to my GD every ngiht via a cron job and an [upload cloud](https
 
 ## Plex and Caddy Configuration
 
-I use [Caddy](https://github.com/mholt/caddy) as a proxy server and route all my items through it. I build via this [script](https://github.com/animosity22/homescripts/blob/master/scripts/build_caddy)
+I use [Caddy](https://github.com/mholt/caddy) as a proxy server and route all my items through it. I build via this [script](https://github.com/animosity22/homescripts/blob/master/scripts/build_caddy).
 
 My plex configuration in my CaddyFile as follows:
 
