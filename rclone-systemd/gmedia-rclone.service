@@ -1,7 +1,7 @@
 [Unit]
 Description=RClone Service
 PartOf=gmedia.service
-RequiresMountsFor=/data
+RequiresMountsFor=/mnt
 
 # This uses cmount as it's a built version of rclone from source
 # sync_read must be used or files are read out of order
@@ -9,23 +9,22 @@ RequiresMountsFor=/data
 
 [Service]
 Type=notify
-Environment=RCLONE_CONFIG=/data/rclone/rclone.conf
-ExecStart=/usr/bin/rclone mount gcrypt: /GD \
+Environment=RCLONE_CONFIG=/home/cloudbox/.config/rclone/rclone.conf
+ExecStart=/usr/bin/rclone mount backup: /mnt/crypt \
    --allow-other \
-   --bind 192.168.1.30 \
    --buffer-size 1G \
    --dir-cache-time 72h \
    --drive-chunk-size 32M \
    --fast-list \
    --log-level INFO \
-   --log-file /home/felix/logs/rclone.log \
+   --log-file /home/cloudbox/logs/rclone.log \
    --umask 002 \
    --vfs-read-chunk-size 128M \
    --vfs-read-chunk-size-limit off
-ExecStop=/bin/fusermount -uz /GD
+ExecStop=/bin/fusermount -uz /mnt/crypt
 Restart=on-failure
-User=felix
-Group=felix
+User=cloudbox
+Group=cloudbox
 
 [Install]
 WantedBy=gmedia.service
