@@ -1,12 +1,12 @@
 [Unit]
-Description = /gmedia MergerFS mount
+Description = /mnt/gmedia MergerFS mount
 PartOf=gmedia.service
 After=gmedia-rclone.service
-RequiresMountsFor=/data
+RequiresMountsFor=/mnt
 
 [Mount]
-What = /data/local:/GD
-Where = /gmedia
+What = /mnt/local:/mnt/crypt
+Where = /mnt/gmedia
 Type = fuse.mergerfs
 Options = use_ino,hard_remove,auto_cache,sync_read,allow_other,category.action=all,category.create=ff
 
