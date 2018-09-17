@@ -1,7 +1,7 @@
 [Unit]
 Description=RClone Service
 PartOf=gmedia.service
-RequiresMountsFor=/mnt
+#RequiresMountsFor=/mnt
 
 # This uses cmount as it's a built version of rclone from source
 # sync_read must be used or files are read out of order
