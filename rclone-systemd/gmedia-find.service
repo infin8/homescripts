@@ -7,7 +7,7 @@ After=gmedia.mount
 
 [Service]
 Type=oneshot
-ExecStart=/bin/sh -c "/usr/bin/find /gmedia > /home/felix/logs/gmedia-find.txt 2>&1"
+ExecStart=/bin/sh -c "/usr/bin/find /mnt/crypt > /home/cloudbox/logs/gmedia-find.txt 2>&1"
 # This service shall be considered active after start
 RemainAfterExit=yes
 User=felix
