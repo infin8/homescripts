@@ -2,7 +2,7 @@
 Description = /mnt/gmedia MergerFS mount
 PartOf=gmedia.service
 After=gmedia-rclone.service
-RequiresMountsFor=/mnt
+#RequiresMountsFor=/mnt
 
 [Mount]
 What = /mnt/local:/mnt/crypt
