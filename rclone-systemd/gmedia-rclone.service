@@ -17,6 +17,7 @@ ExecStart=/usr/bin/rclone mount backup: /mnt/crypt \
    --drive-chunk-size 32M \
    --fast-list \
    --log-level INFO \
+   --config /home/cloudbox/.config/rclone/rclone.conf
    --log-file /home/cloudbox/logs/rclone.log \
    --umask 002 \
    --vfs-read-chunk-size 128M \
